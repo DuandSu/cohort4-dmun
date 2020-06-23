@@ -46,6 +46,7 @@ const tttTools = {
     // Turn = 2 X   If Board[8] is blank, Go(8), else Go(2).
     // Turn = 3 O  If Posswin(X) is not 0, then Go(Posswin(X)) i.e. [ block opponent’s win], else Go(Make2).
     // Turn = 4 X  if Posswin(X) is not 0 then Go(Posswin(X)) [i.e. win], else if Posswin(O) is not 0, then Go(Posswin(O)) [i.e. block win], else if Board[6] is blank, then Go(6), else Go(2). [to explore other possibility if there be any ].
+    //  Add function lookForWin. If player has Board[4]. Then go for corner square. For every null element see if there is a null across or next to it.
     // Turn = 5 O  If Posswin(O) is not 0 then Go(Posswin(O)), else if Posswin(X) is not 0, then Go(Posswin(X)), else Go(Make2).
     // Turn = 6 X  If Posswin(X) is not 0 then Go(Posswin(X)), else if Posswin(X) is not 0, then Go(Posswin(O)) else go anywhere that is blank.
     // Turn = 7 O  if Posswin(O) is not 0 then Go(Posswin(O)), else if Posswin(X) is not 0, then Go(Posswin(X)), else go anywhere that is blank.
@@ -115,6 +116,16 @@ const tttTools = {
             if (chkWin[0] < 0) {
                 if (board[4] === null)
                     return (tttTools.cvt2Grid(4));
+                else if (board[4] === "O") {
+                    if (board[0] === null)
+                        return tttTools.cvt2Grid(0);
+                    else if (board[2] === null)
+                        return tttTools.cvt2Grid(2);
+                    else if (board[6] === null)
+                        return tttTools.cvt2Grid(6);
+                    else if (board[8] === null)
+                        return tttTools.cvt2Grid(8);
+                }
                 else if (board[1] === null) 
                     return tttTools.cvt2Grid(1);
                 else if (board[3] === null) 
@@ -158,7 +169,6 @@ const tttTools = {
                 else if (element === "O") return 5;
                 else return 2
             });
-        let chk3 = [];
         const noWin = [-1, null];
         let win = noWin.slice();
         let calcWin;

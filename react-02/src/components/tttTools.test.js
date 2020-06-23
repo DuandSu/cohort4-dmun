@@ -17,6 +17,9 @@ test('140b: Playing with Conditions', () => {
     
     expect("X").toBeTruthy();
     expect("O").toBeTruthy();
+    expect(-1).toBeTruthy();
+    expect(0).toBeFalsy();
+    expect(8).toBeFalsy();
     expect(null).toBeFalsy();
     
 });
