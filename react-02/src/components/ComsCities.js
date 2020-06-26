@@ -67,7 +67,17 @@ class ComsCities extends React.Component {
     }
 
     btnAddCity = async (e) => {
-        this.setDivBlock("AddCity");
+        
+        if (this.newCommunity === null || this.newCommunity.name === "MessageOnly") {
+
+            let tmpMsg = "Before adding a city, you must first create the community!";
+            this.setState({
+                msgArea: tmpMsg,
+            });
+
+        }
+        else 
+            this.setDivBlock("AddCity");
     }
 
     onChgselectCity = async (e) => {
