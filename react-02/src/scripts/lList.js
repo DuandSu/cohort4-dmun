@@ -1,3 +1,14 @@
+//
+// This is Linked List and Node classes for Competency 140D.
+//
+// Changes to consider before attempting presentation in React JS:
+//
+//  1. Add method to "insertBefore". Otherwise can't append to the front of the list.
+//  2. Make head simply a reference to null, rather than having a control headNode "llHead" node
+//      as the head. headNode is not really necessary since have controller class. Though
+//      NOT hurting anything. Presentation logic won't be affected. Probably OK to leave for now.
+//
+
 class LinkedList {
 
     constructor () {
@@ -13,24 +24,29 @@ class LinkedList {
 
         this.current = this.head.nextPtr === null ? this.head : this.head.nextPtr;
 
+        return this.current;
+
     }
 
     last() {
 
         this.current = this.tail;
 
+        return this.current;
     }
 
     next() {
 
         this.current = this.current.nextPtr === null ? this.current : this.current.nextPtr;
 
+        return this.current;
     }
 
     previous() {
 
         this.current = this.current.prevPtr === this.head ? this.current : this.current.prevPtr;
 
+        return this.current;
     }
 
     insertAfter(subject, amount) {
@@ -44,6 +60,8 @@ class LinkedList {
         this.current = newNode;
 
         if (this.current.nextPtr === null) this.tail = newNode;
+
+        return this.current;
 
     }
 
@@ -59,14 +77,17 @@ class LinkedList {
 
         if (this.current.nextPtr === null) this.tail = this.current;
 
+        return this.current;
     }
 
     //
-    // total all the amounts of all nodes. Receive the "START" as a parameter to jump to
-    // first node. Cycle through remaining nodes recursively.
+    // total all the amounts of all nodes. Receive the "START", which is the default, 
+    // as a parameter to jump to first node. Cycle through remaining nodes recursively.
     //
 
     total(nodeFlg) {
+
+        if (typeof nodeFlg === 'undefined') nodeFlg = "START";
 
         if (nodeFlg === "START") {
             this.first();
@@ -82,9 +103,7 @@ class LinkedList {
             sumTotal = Number(this.current.amount) + Number(this.total("NEXT"));
 
         return sumTotal;
-
     }
-
 }
 
 class Node {
@@ -96,9 +115,9 @@ class Node {
         this.prevPtr = prevPtr;
         this.nextPtr = nextPtr;
 
-        if (typeof this.amount == 'undefined') this.amount = 0;
-        if (typeof this.prevPtr == 'undefined') this.prevPtr = null;
-        if (typeof this.nextPtr == 'undefined') this.nextPtr = null;
+        if (typeof this.amount === 'undefined') this.amount = 0;
+        if (typeof this.prevPtr === 'undefined') this.prevPtr = null;
+        if (typeof this.nextPtr === 'undefined') this.nextPtr = null;
 
     }
 

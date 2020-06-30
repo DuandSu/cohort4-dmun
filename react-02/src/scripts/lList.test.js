@@ -90,8 +90,11 @@ test('140d: Testing LinkedList Class insertAfter ', () => {
 
     const nameList = new lList.LinkedList ();
 
-    nameList.insertAfter("Duane", "57");
+    let currentNode;
 
+    currentNode = nameList.insertAfter("Duane", "57");
+
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Duane; " +
         "Amount = 57; " + 
         "Previous = llHead; " +
@@ -99,8 +102,9 @@ test('140d: Testing LinkedList Class insertAfter ', () => {
 
     expect(nameList.tail).toEqual(nameList.current);
 
-    nameList.insertAfter("Suzanne", "25");
+    currentNode = nameList.insertAfter("Suzanne", "25");
 
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Suzanne; " +
         "Amount = 25; " + 
         "Previous = Duane; " +
@@ -111,9 +115,10 @@ test('140d: Testing LinkedList Class insertAfter ', () => {
     let chkTail = nameList.tail;
     nameList.current = nameList.current.prevPtr;
     
-    nameList.insertAfter("Sasha", "17");
+    // nameList.insertAfter("Sasha", "17");
 
-    expect(nameList.current.showNode()).toBe("Subject = Sasha; " +
+    // expect(nameList.current.showNode()).toBe("Subject = Sasha; " +
+    expect(nameList.insertAfter("Sasha", "17").showNode()).toBe("Subject = Sasha; " +
         "Amount = 17; " + 
         "Previous = Duane; " +
         "Next = Suzanne");
@@ -122,6 +127,8 @@ test('140d: Testing LinkedList Class insertAfter ', () => {
 });
 
 test('140d: Testing LinkedList Class first, last, next, previous and delete', () => {
+
+    let currentNode;
 
     const nameList = new lList.LinkedList ();
     nameList.insertAfter("Duane", "57");
@@ -134,23 +141,23 @@ test('140d: Testing LinkedList Class first, last, next, previous and delete', ()
         "Previous = Sasha; " +
         "Next = null");
 
-    nameList.first();
+    currentNode = nameList.first();
 
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Duane; " +
-        "Amount = 57; " + 
-        "Previous = llHead; " +
-        "Next = Suzanne");
-
-    nameList.last();
-
-    expect(nameList.current.showNode()).toBe("Subject = Christopher; " +
-        "Amount = 15; " + 
-        "Previous = Sasha; " +
-        "Next = null");
-
+    "Amount = 57; " + 
+    "Previous = llHead; " +
+    "Next = Suzanne");
+    
+    expect(nameList.last().showNode()).toBe("Subject = Christopher; " +
+    "Amount = 15; " + 
+    "Previous = Sasha; " +
+    "Next = null");
+    
     nameList.first();
-    nameList.next();
-
+    currentNode = nameList.next();
+    
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Suzanne; " +
         "Amount = 25; " + 
         "Previous = Duane; " +
@@ -163,33 +170,31 @@ test('140d: Testing LinkedList Class first, last, next, previous and delete', ()
         "Previous = Suzanne; " +
         "Next = Christopher");
 
-    nameList.last();
-    expect(nameList.current).toEqual(nameList.tail);
+    expect(nameList.last()).toEqual(nameList.tail);
 
-    nameList.next();
-
-    expect(nameList.current).toEqual(nameList.tail);
+    expect(nameList.next()).toEqual(nameList.tail);
     expect(nameList.current.showNode()).toBe("Subject = Christopher; " +
         "Amount = 15; " + 
         "Previous = Sasha; " +
         "Next = null");
 
-    nameList.previous();
+    currentNode = nameList.previous();
 
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Sasha; " +
     "Amount = 17; " + 
     "Previous = Suzanne; " +
     "Next = Christopher");
 
-    nameList.previous();
+    currentNode = nameList.previous();
 
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Suzanne; " +
     "Amount = 25; " + 
     "Previous = Duane; " +
     "Next = Sasha");
 
-    nameList.first();
-    expect(nameList.current).toEqual(nameList.head.nextPtr);
+    expect(nameList.first()).toEqual(nameList.head.nextPtr);
     
     expect(nameList.current.showNode()).toBe("Subject = Duane; " +
     "Amount = 57; " + 
@@ -198,32 +203,33 @@ test('140d: Testing LinkedList Class first, last, next, previous and delete', ()
 
     nameList.next();
 
-    nameList.delete();
+    currentNode = nameList.delete();
 
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Duane; " +
     "Amount = 57; " + 
     "Previous = llHead; " +
     "Next = Sasha");    
-
-    nameList.delete();
     
+    currentNode = nameList.delete();
+    
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Sasha; " +
     "Amount = 17; " + 
     "Previous = llHead; " +
     "Next = Christopher"); 
-
+    
     nameList.next();
-
-    nameList.delete();
-
+    
+    currentNode = nameList.delete();
+    
+    expect(currentNode).toEqual(nameList.current);
     expect(nameList.current.showNode()).toBe("Subject = Sasha; " +
     "Amount = 17; " + 
     "Previous = llHead; " +
     "Next = null");
     
-    nameList.delete();
-
-    expect(nameList.current.showNode()).toBe("Subject = llHead; " +
+    expect(nameList.delete().showNode()).toBe("Subject = llHead; " +
     "Amount = 0; " + 
     "Previous = null; " +
     "Next = null"); 
@@ -237,12 +243,12 @@ test('140d: Testing LinkedList Class total', () => {
     nameList.insertAfter("Sasha", "17");
     nameList.insertAfter("Christopher", "15");
 
-    expect(nameList.total("START")).toBe(114);
+    expect(nameList.total()).toBe(114);
 
     nameList.last();
     nameList.insertAfter("Diesel", "3");
 
-    expect(nameList.total("START")).toBe(117);
+    expect(nameList.total()).toBe(117);
     
     nameList.first();
     nameList.insertAfter("Rose", "90");
@@ -254,8 +260,7 @@ test('140d: Testing LinkedList Class total', () => {
     // node to the beginning of the list.
     //
 
-    nameList.first();
-    expect(nameList.current.showNode()).toBe("Subject = Duane; " +
+    expect(nameList.first().showNode()).toBe("Subject = Duane; " +
     "Amount = 57; " + 
     "Previous = llHead; " +
     "Next = Rose");
