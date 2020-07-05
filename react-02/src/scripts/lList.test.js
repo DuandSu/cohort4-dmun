@@ -175,7 +175,7 @@ test('140d: Testing LinkedList Class insertBefore ', () => {
     currentNode = nameList.insertBefore("Christopher", "15");    
 
     //
-    // Note that can only insert after last node using insertAfter().
+    // Note can only insert after last node using insertAfter().
     //
 
     expect(currentNode).toEqual(nameList.current);
