@@ -373,7 +373,7 @@ test('130d: Async ASP loadAPICommunity and createNewCommunity with No API data',
     let data = await c920.postData(url + "clear");
     expect(data.status).toBe(200);
 
-    data = await c130d.loadAPICommunity(c130d.url);
+    data = await c130d.loadAPICommunity(c130d.url, testClass.displayMessage);
 
     expect(data.allLists).toEqual([]);
     expect(data.cityList[0].name).toBe("MessageOnly");
@@ -517,7 +517,7 @@ test('130d: Async ASP loadAPICommunity', async (done) => {
     data = await c130d.createAPICity (c130d.url, canada.cityList[3], canada.cityList[0]);
     expect(data.status).toBe(200);
 
-    let newCommunity = await c130d.loadAPICommunity(c130d.url);
+    let newCommunity = await c130d.loadAPICommunity(c130d.url, testClass.displayMessage);
 
     //
     // messageArea is now JSX then rendered, not loaded to messageArea old way.

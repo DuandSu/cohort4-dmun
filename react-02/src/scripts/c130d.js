@@ -356,12 +356,13 @@ const c130d = {
         return data;
     },
     
-    loadAPICommunity: async (url) => {
+    loadAPICommunity: async (url, pDisplayMessage) => {
 
         let newCom = new community.Community ("MessageOnly");
         let allLists = [];
 
-        window.ccComponent.displayMessage("Loading Community and Cities");
+        pDisplayMessage("Loading Community and Cities");
+        // window.ccComponent.displayMessage("Loading Community and Cities");
 
         let data = await c130d.getAllAPI(url);
 
@@ -370,7 +371,8 @@ const c130d = {
             if (data.length > 0) {
                 let statusDots = '.'
                 newCom = new community.Community ("");
-                window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
+                pDisplayMessage(`Loading Community and Cities ${statusDots}`);
+                // window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
                 //
                 // There is API data so start loading it. If none. Display
                 // message to enter the Community Name. 
@@ -378,7 +380,8 @@ const c130d = {
                 for (let i = 0; i < data.length; i++) {
                     
                     statusDots += ".";
-                    window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
+                    pDisplayMessage(`Loading Community and Cities ${statusDots}`);
+                    // window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
 
                     if (i === 0) {
                         if (data[i].key === 0) {
@@ -393,12 +396,14 @@ const c130d = {
                     }
                 }
                 statusDots += ".";
-                window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
+                pDisplayMessage(`Loading Community and Cities ${statusDots}`);
+                // window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
                 
                 allLists = c130d.refreshCityList(newCom);
                 
                 statusDots += ". DONE";
-                window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
+                pDisplayMessage(`Loading Community and Cities ${statusDots}`);
+                // window.ccComponent.displayMessage(`Loading Community and Cities ${statusDots}`);
 
                 newCom.addMessage("Community Loaded!");
                 

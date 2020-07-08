@@ -14,6 +14,7 @@ class ComsCities extends React.Component {
         this.btnCancelCom = this.btnCancelCom.bind(this);
         this.btnCreateCity = this.btnCreateCity.bind(this);
         this.btnCancelCity = this.btnCancelCity.bind(this);
+        // this.displayMessage = this.displayMessage(this);
         this.state = {
             msgArea: "",
             divBlock: null,
@@ -329,7 +330,7 @@ class ComsCities extends React.Component {
         let tmpMsg = "";
         let data = await c130d.confirmAPIConnect(c130d.url);
         if (data.status === 200) {
-            this.newCommunity = await c130d.loadAPICommunity(c130d.url);
+            this.newCommunity = await c130d.loadAPICommunity(c130d.url, this.displayMessage);
 
             if (this.newCommunity.name !== "MessageOnly") {
                 if (this.newCommunity.isMessage()) this.newCommunity.resetMessage();
