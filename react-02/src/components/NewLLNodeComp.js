@@ -10,10 +10,10 @@ function NewLLNodeComp(props) {
 
     function mySave() {
         const subject = get("idSubject");
-        const amount = get("idAmount");
+        const amount = Number(get("idAmount"));
 
         if (!amount) {
-            setMsg('You must enter an amount');
+            setMsg('You must enter an Numeric amount');
             return;
         }
 
@@ -24,18 +24,18 @@ function NewLLNodeComp(props) {
     return (
         <div className="clInnerBox">
             <h1>New Subject Node</h1>
-            {msg}
+            <p id="messageArea">{msg}</p>
             <div>
-                <label>Subject </label>
+                <label className="labelLL">Subject </label>
                 <input id="idSubject"></input>
             </div>
             <div>
-                <label>Amount </label>
+                <label className="labelLL">Amount </label>
                 <input id="idAmount"></input>
             </div>
 
-            <button onClick={mySave} >Save</button>
-            <button todo="cancel">Cancel</button>
+            <button className="clButton" onClick={mySave} >Save</button>
+            <button className="clButton" todo="cancel">Cancel</button>
         </div>
     )
 }

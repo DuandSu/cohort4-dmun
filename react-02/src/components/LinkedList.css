@@ -1,12 +1,13 @@
-.App {
+/* .App {
     text-align: center;
     font-family: helvetica;
-}
-  
+} */
+
 .clBox {
     /* background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%); */
     /* background: linear-gradient(#43C6AC, #F8FFAE); */
-    background: white;
+    /* background: white; */
+    background-color: rgba(0, 128, 128, 0.388235294117647);
     border: solid;
     width: 80%;
     min-height: 100px;
@@ -24,17 +25,18 @@
     margin: auto;
 }
 
-input, textarea, select {
+/* input, textarea, select {
     width: 150px;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} */
 
-button {
+.clButton {
     margin: .5em;
+    font-weight: bold;
 }
-
+/* 
 input, select {
     width: 100%;
     padding: 12px 20px;
@@ -43,9 +45,10 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
+}*/
 
-label {
+.labelLL {
+    color: #a9c2c0;
     font-weight: bold;
 }
 
@@ -68,6 +71,7 @@ label {
 
 .clItem-1 {
     /* border: 1px solid #000; */
+    color: #a9c2c0;
     grid-column: 1;
     text-align: right;
     font-weight: bold;
@@ -75,6 +79,7 @@ label {
 
 .clItem-2 {
     /* border: 1px solid #000; */
+    color: white;
     grid-column: 2;
     align-content: start;
     text-align: left;

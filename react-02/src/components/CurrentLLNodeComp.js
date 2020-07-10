@@ -6,7 +6,7 @@ function CurrentLLNodeComp(props) {
 
     return (
         <div>
-            <h1>Current Node: </h1>
+            <h1>Current Subject Node: </h1>
             <div className="clPanel-2">
                 <div className="clItem-1">Subject:</div>
                 <div className="clItem-2">{subjectsLL.current === subjectsLL.head 
@@ -31,6 +31,9 @@ function CurrentLLNodeComp(props) {
                 {(subjectsLL.tail === null || subjectsLL.tail === subjectsLL.head) 
                     ? null : subjectsLL.tail.subject} {`==>]`} 
             </button>
+            <br></br>
+            <button className="clButton" todo="total">Total</button>
+            <h1>Click Total Button to Update: {props.ptotalAmount}</h1>
         </div>
     )
 }

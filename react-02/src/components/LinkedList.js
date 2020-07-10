@@ -6,6 +6,7 @@ import NewLLNodeComp from './NewLLNodeComp';
 import lList from '../scripts/lList.js'
 
 const subjectList = new lList.LinkedList ();
+let totalAmount = 0;
 
 function LinkedList(props) {
 
@@ -24,11 +25,7 @@ function LinkedList(props) {
   //
   const [currentNode, setCurrentNode] = useState();
 
-  // Similar to componentDidMount and componentDidUpdate:
-  // useEffect(() => {
-  //   // Update the document title using the browser API
-  //   document.title = `Click Count: ${count}`;
-  // });
+  // const [totalAmount, setTotalAmount] = useState(0);
 
   const onSaveLLNodeBef = (s, a) => {
     // console.log(s, a);
@@ -53,13 +50,6 @@ function LinkedList(props) {
     if (todo) {
       setToDo(todo);
       
-
-      // if (todo === 'savepage') {
-      //   if (!subjectList.current) {
-      //     setToDo("show");
-      //   }
-      // }
-      // else 
       if (todo === 'first') {
         subjectList.first();
       } 
@@ -71,6 +61,13 @@ function LinkedList(props) {
       }
       else if (todo === 'last') {
         subjectList.last();
+      }
+      else if (todo === 'total') {
+        let tempTotal = subjectList.total();
+        totalAmount = tempTotal;
+        // console.log("tempTotal = " + tempTotal);
+        // setTotalAmount(tempTotal);
+        // console.log("totalAmount = " + totalAmount);
       }
       if (subjectList.current !== null) setCurrentNode(subjectList.current);
     }
@@ -94,7 +91,11 @@ function LinkedList(props) {
   else {
     if (subjectList.current != subjectList.head) {
       // setCurrentNode(subjectList.current);
-      output.push(<CurrentLLNodeComp key="current" subjects={subjectList} />);
+      output.push(<CurrentLLNodeComp 
+        key="current" 
+        subjects={subjectList} 
+        ptotalAmount={totalAmount}
+      />);
     }
     output.push(<ButtonsLLComp key="buttons" />);
   }
