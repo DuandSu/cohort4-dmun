@@ -20,6 +20,7 @@ import ComsCities from './components/ComsCities';
 import Play from './components/Play';
 import Clock from './components/Clock';
 import LinkedList from './components/LinkedList';
+import QueCom from './components/QueCom';
 
 import './App.css';
 
@@ -59,8 +60,11 @@ function App() {
   else if (appKey === "linkedlist") {
     output.push(<LinkedList sMessageArea={messageArea} key={appKey}/>);
    }
+  else if (appKey === "queues") {
+    output.push(<QueCom sMessageArea={messageArea} key={appKey}/>);
+  }
   else {
-    output.push(<Starter sMessageArea={messageArea} key={appKey}/>);
+      output.push(<Starter sMessageArea={messageArea} key={appKey}/>);
   }
 
   return (
@@ -82,7 +86,7 @@ function App() {
               <img src={kittyKL} className="App-svg5" alt="kittyKL" ikey="linkedlist" onClick={onPushMe} />
             </div>
             <div>
-              <img src={spockHI} className="App-svg6" alt="spockHI" ikey="6" onClick={onPushMe} />
+              <img src={spockHI} className="App-svg6" alt="spockHI" ikey="queues" onClick={onPushMe} />
             </div>
               <Clock
                 cClass={"App-svg7"}
