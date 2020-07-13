@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 function NewQueNodeComp(props) {
 
     const [msg, setMsg] = useState("");
+    // const txtColorDefault = "#a9c2c0";
+    // const txtColorGreen = "green";
 
     function get(id) {
         return document.getElementById(id).value;
@@ -22,7 +24,7 @@ function NewQueNodeComp(props) {
     }
 
     return (
-        <div className="clInnerBox">
+        <div className="clInnerBox" style={{color: `${props.ptxtColor}`}}>
             <h1>New Subject Node</h1>
             <p id="messageArea">{msg}</p>
             <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ButtonsQueComp() {
+
     return (
         <div>
             <button className="clButton" todo="push">Put In</button>

@@ -6,7 +6,7 @@ function CurrentQueNodeComp(props) {
     const subjectsFIFO = props.subjectsFIFO;
 
     return (
-        <div>
+        <div style={{color: `${props.ptxtColor}`}}>
             <div>
                 <h1>Current FIFO Subject Node: </h1>
                 <div className="clPanel-2">

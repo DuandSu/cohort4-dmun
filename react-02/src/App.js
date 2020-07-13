@@ -36,6 +36,14 @@ function App() {
   const [messageArea, setMessage] = useState("Edit src/App.js and save to reload.");
   const [appKey, setAppKey] = useState("starter");
 
+  const txtColorDefault = "#a9c2c0";
+  const txtColorGreen = "green";
+  const txtColorYellow = "yellow";
+  const txtColorYellowGreen = "yellowgreen";
+  const txtColorBlue = "blue";
+
+  let txtColor = txtColorYellow;
+
   const onPushMe = (e) => {
 
     const tmpAppKey = e.target.getAttribute("ikey");
@@ -55,13 +63,13 @@ function App() {
     output.push(<Play sMessageArea={messageArea} key={appKey}/>);
   }
   else if (appKey === "comscities") {
-    output.push(<ComsCities sMessageArea={messageArea} key={appKey}/>);
+    output.push(<ComsCities sMessageArea={messageArea} key={appKey} ptxtColor={txtColor}/>);
   }
   else if (appKey === "linkedlist") {
-    output.push(<LinkedList sMessageArea={messageArea} key={appKey}/>);
+    output.push(<LinkedList sMessageArea={messageArea} key={appKey} ptxtColor={txtColor}/>);
    }
   else if (appKey === "queues") {
-    output.push(<QueCom sMessageArea={messageArea} key={appKey}/>);
+    output.push(<QueCom sMessageArea={messageArea} key={appKey} ptxtColor={txtColor}/>);
   }
   else {
       output.push(<Starter sMessageArea={messageArea} key={appKey}/>);

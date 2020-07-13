@@ -22,7 +22,7 @@ function NewLLNodeComp(props) {
     }
 
     return (
-        <div className="clInnerBox">
+        <div className="clInnerBox" style={{color: `${props.ptxtColor}`}}>
             <h1>New Subject Node</h1>
             <p id="messageArea">{msg}</p>
             <div>

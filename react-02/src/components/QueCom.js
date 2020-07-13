@@ -7,6 +7,7 @@ import queue from '../scripts/Queue.js'
 
 const subjectListFIFO = new queue.Queue ("FIFO");
 const subjectListLIFO = new queue.Queue ("LIFO");
+
 let totalAmountLIFO = 0;
 let totalAmountFIFO = 0;
 let messageArea = "";
@@ -92,7 +93,7 @@ function QueCom(props) {
   let output = [];
 
   if (todo === "push") {
-    output.push(<NewQueNodeComp key="push" onSave={onSaveQueNode} />);
+    output.push(<NewQueNodeComp key="push" onSave={onSaveQueNode} ptxtColor={props.ptxtColor} />);
   }
   else {
     if (subjectListFIFO.current !== subjectListFIFO.head &&
@@ -105,6 +106,7 @@ function QueCom(props) {
         ptotalAmountLIFO={totalAmountLIFO}
         ptotalAmountFIFO={totalAmountFIFO}
         pMessage={messageArea}
+        ptxtColor={props.ptxtColor}
       />);
     }
     output.push(<ButtonsQueComp key="buttons" />);
@@ -113,7 +115,7 @@ function QueCom(props) {
   return (
     <div>
       <div onClick={onClick} className="App clBox">
-        <h1>{props.sMessageArea} for Queues - Competency 140D</h1>
+        <h1 style={{color: `${props.ptxtColor}`}}>{props.sMessageArea} for Queues - Competency 140D</h1>
           {output}
       </div>
     </div>

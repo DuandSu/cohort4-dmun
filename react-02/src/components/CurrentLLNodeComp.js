@@ -5,7 +5,7 @@ function CurrentLLNodeComp(props) {
     const subjectsLL = props.subjects;
 
     return (
-        <div>
+        <div style={{color: `${props.ptxtColor}`}}>
             <h1>Current Subject Node: </h1>
             <div className="clPanel-2">
                 <div className="clItem-1">Subject:</div>
