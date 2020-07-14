@@ -21,6 +21,7 @@ import Play from './components/Play';
 import Clock from './components/Clock';
 import LinkedList from './components/LinkedList';
 import QueCom from './components/QueCom';
+import SetColor from './components/SetColor';
 
 import './App.css';
 
@@ -35,20 +36,20 @@ function App() {
   
   const [messageArea, setMessage] = useState("Edit src/App.js and save to reload.");
   const [appKey, setAppKey] = useState("starter");
-
-  const txtColorDefault = "#a9c2c0";
-  const txtColorGreen = "green";
-  const txtColorYellow = "yellow";
-  const txtColorYellowGreen = "yellowgreen";
-  const txtColorBlue = "blue";
-
-  let txtColor = txtColorYellow;
+  const [txtColor, settxtColor] = useState("#a9c2c0");
 
   const onPushMe = (e) => {
 
     const tmpAppKey = e.target.getAttribute("ikey");
     setMessage(`Called Application ${tmpAppKey}`);
     setAppKey(tmpAppKey);
+
+  }
+
+  const onSelectColor = (e) => {
+
+    settxtColor(document.getElementById("selColor").value);
+    setAppKey("starter");
 
   }
 
@@ -71,8 +72,17 @@ function App() {
   else if (appKey === "queues") {
     output.push(<QueCom sMessageArea={messageArea} key={appKey} ptxtColor={txtColor}/>);
   }
+  else if (appKey === "setcolor") {
+    output.push(
+      <SetColor 
+        sMessageArea={messageArea} 
+        key={appKey} 
+        ptxtColor={txtColor}
+        onColClick={onSelectColor}
+      />);
+  }
   else {
-      output.push(<Starter sMessageArea={messageArea} key={appKey}/>);
+    output.push(<Starter sMessageArea={messageArea} key={appKey}/>);
   }
 
   return (
@@ -98,7 +108,7 @@ function App() {
             </div>
               <Clock
                 cClass={"App-svg7"}
-                cKey={"7"} 
+                cKey={"setcolor"} 
                 cOnPushMe={onPushMe}
               />
         </div>
