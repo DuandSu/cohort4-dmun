@@ -1,4 +1,5 @@
 import React from 'react';
+import ThemeContext from './ThemeContext';
 
 function CurrentQueNodeComp(props) {
 
@@ -6,7 +7,7 @@ function CurrentQueNodeComp(props) {
     const subjectsFIFO = props.subjectsFIFO;
 
     return (
-        <div style={{color: `${props.ptxtColor}`}}>
+        <div style={{color: `${React.useContext(ThemeContext)}`}}>
             <div>
                 <h1>Current FIFO Subject Node: </h1>
                 <div className="clPanel-2">

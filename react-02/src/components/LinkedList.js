@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import ThemeContext from './ThemeContext';
+
 import './LinkedList.css';
 import ButtonsLLComp from './ButtonsLLComp';
 import CurrentLLNodeComp from './CurrentLLNodeComp';
@@ -83,19 +85,17 @@ function LinkedList(props) {
   // else console.log("Null");
 
   if (todo === "newbefore") {
-    output.push(<NewLLNodeComp key="newbefore" onSave={onSaveLLNodeBef} ptxtColor={props.ptxtColor} />);
+    output.push(<NewLLNodeComp key="newbefore" onSave={onSaveLLNodeBef} />);
   }
   else if (todo === "newafter") {
-    output.push(<NewLLNodeComp key="newafter" onSave={onSaveLLNodeAft} ptxtColor={props.ptxtColor} />);
+    output.push(<NewLLNodeComp key="newafter" onSave={onSaveLLNodeAft} />);
   }
   else {
     if (subjectList.current != subjectList.head) {
-      // setCurrentNode(subjectList.current);
       output.push(<CurrentLLNodeComp 
         key="current" 
         subjects={subjectList} 
         ptotalAmount={totalAmount}
-        ptxtColor={props.ptxtColor}
       />);
     }
     output.push(<ButtonsLLComp key="buttons" />);
@@ -104,7 +104,7 @@ function LinkedList(props) {
   return (
     <div>
       <div onClick={onClick} className="App clBox">
-        <h1 style={{color: `${props.ptxtColor}`}}>{props.sMessageArea} for Linked List - Competency 140D</h1>
+        <h1 style={{color: `${React.useContext(ThemeContext)}`}}>{props.sMessageArea} for Linked List - Competency 140D</h1>
           {output}
       </div>
     </div>

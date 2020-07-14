@@ -1,11 +1,12 @@
 import React from 'react';
+import ThemeContext from './ThemeContext';
 
 function CurrentLLNodeComp(props) {
 
     const subjectsLL = props.subjects;
 
     return (
-        <div style={{color: `${props.ptxtColor}`}}>
+        <div style={{color: `${React.useContext(ThemeContext)}`}}>
             <h1>Current Subject Node: </h1>
             <div className="clPanel-2">
                 <div className="clItem-1">Subject:</div>
