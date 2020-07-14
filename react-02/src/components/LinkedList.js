@@ -27,23 +27,15 @@ function LinkedList(props) {
   //
   const [currentNode, setCurrentNode] = useState();
 
-  // const [totalAmount, setTotalAmount] = useState(0);
-
   const onSaveLLNodeBef = (s, a) => {
-    // console.log(s, a);
     subjectList.insertBefore(s, a);
     setToDo('show');
   }
 
   const onSaveLLNodeAft = (s, a) => {
-    // console.log(s, a);
     subjectList.insertAfter(s, a);
     setToDo('show');
   }
-  
-  // const onShow = () => {
-  //   setToDo('show');
-  // }
   
   const onClick = async (e) => {
     const todo = e.target.getAttribute('todo');
@@ -67,22 +59,12 @@ function LinkedList(props) {
       else if (todo === 'total') {
         let tempTotal = subjectList.total();
         totalAmount = tempTotal;
-        // console.log("tempTotal = " + tempTotal);
-        // setTotalAmount(tempTotal);
-        // console.log("totalAmount = " + totalAmount);
       }
       if (subjectList.current !== null) setCurrentNode(subjectList.current);
     }
   }
 
   let output = [];
-  // console.log("todo = ", todo);
-  // if (subjectList.current.prevPtr) 
-  //   console.log(subjectList.current.prevPtr);
-  // else console.log("Null");
-  // if (subjectList.current.nextPtr) 
-  //   console.log(subjectList.current.nextPtr);
-  // else console.log("Null");
 
   if (todo === "newbefore") {
     output.push(<NewLLNodeComp key="newbefore" onSave={onSaveLLNodeBef} />);
@@ -91,7 +73,7 @@ function LinkedList(props) {
     output.push(<NewLLNodeComp key="newafter" onSave={onSaveLLNodeAft} />);
   }
   else {
-    if (subjectList.current != subjectList.head) {
+    if (subjectList.current !== subjectList.head) {
       output.push(<CurrentLLNodeComp 
         key="current" 
         subjects={subjectList} 

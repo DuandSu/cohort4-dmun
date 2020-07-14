@@ -13,7 +13,6 @@ function CurrentLLNodeComp(props) {
                 <div className="clItem-2">{subjectsLL.current === subjectsLL.head 
                     ? "Empty" : subjectsLL.current.subject}
                 </div>
-
                 <div className="clItem-1">Amount:</div>
                 <div className="clItem-2">{subjectsLL.current.amount}</div>
             </div>

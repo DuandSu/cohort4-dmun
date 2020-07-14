@@ -46,7 +46,6 @@ function CurrentQueNodeComp(props) {
                     <div className="clItem-2">{subjectsLIFO.current === subjectsLIFO.head 
                         ? "Empty" : subjectsLIFO.current.subject}
                     </div>
-
                     <div className="clItem-1">Amount:</div>
                     <div className="clItem-2">{subjectsLIFO.current.amount}</div>
                 </div>
